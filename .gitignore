@@ -1,0 +1,14 @@
+# Credenciales y configuración local de AWS
+.aws/
+*.pem
+
+# Estado y archivos de trabajo de Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+tfplan
+
+# Configuración local de Gemini (puede contener rutas personales)
+.gemini/settings.local.json

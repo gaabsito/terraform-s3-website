@@ -1,0 +1,596 @@
+/* ==========================================================================
+   Estilos CSS para la Práctica DevOps 00
+   Autor: Gabriel (con IA + MCP)
+   ========================================================================== */
+
+/* Variables de Color y Tipografía */
+:root {
+    --bg-main: #f8fafc;
+    --bg-alt: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+
+    /* Colores del Sistema */
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: #eff6ff;
+    --primary-dark: #1e3a8a;
+    --accent: #10b981;
+    --warning: #f59e0b;
+
+    /* Colores Específicos por Tecnología */
+    --color-tf: #7b36ec;
+    --color-tf-light: #f5f0ff;
+    --color-s3: #e27414;
+    --color-s3-light: #fff7ed;
+    --color-mcp: #06b6d4;
+    --color-mcp-light: #ecfeff;
+
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* Reset y Estilos Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Componentes Comunes
+   ========================================================================== */
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.highlight {
+    background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-alt);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================================================
+   Barra de Navegación (Navbar)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--text-main);
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-menu a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+/* ==========================================================================
+   Sección Hero
+   ========================================================================== */
+.hero-section {
+    padding: 130px 24px 60px;
+    background: radial-gradient(circle at 90% 10%, #eef2ff 0%, var(--bg-main) 70%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+/* Tarjeta del Autor */
+.author-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--card-bg);
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    width: fit-content;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.author-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Gráfico del Hero */
+.hero-graphic {
+    display: flex;
+    justify-content: center;
+}
+
+.graphic-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.devops-flow {
+    width: 100%;
+    height: auto;
+}
+
+.node {
+    transition: transform var(--transition-normal);
+}
+
+.node:hover {
+    transform: scale(1.08);
+}
+
+.graphic-caption {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* ==========================================================================
+   Secciones de Tecnologías (Contenido)
+   ========================================================================== */
+.content-wrapper {
+    margin-top: 40px;
+}
+
+.tech-section {
+    padding: 80px 24px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+.tech-section.alt-bg {
+    background-color: var(--bg-alt);
+}
+
+.section-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.section-grid.reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.section-grid.reverse .section-visual {
+    grid-column: 2;
+}
+
+.section-grid.reverse .section-info {
+    grid-column: 1;
+}
+
+/* Visuales e Iconos */
+.section-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.icon-wrapper:hover {
+    transform: translateY(-6px) rotate(3deg);
+    box-shadow: var(--shadow-lg);
+}
+
+.icon-wrapper svg {
+    width: 70px;
+    height: 70px;
+}
+
+/* Estilos de Color específicos por Tecnología */
+.color-terraform {
+    background-color: var(--color-tf-light);
+    color: var(--color-tf);
+    border: 1px solid rgba(123, 54, 236, 0.15);
+}
+
+.color-s3 {
+    background-color: var(--color-s3-light);
+    color: var(--color-s3);
+    border: 1px solid rgba(226, 116, 20, 0.15);
+}
+
+.color-mcp {
+    background-color: var(--color-mcp-light);
+    color: var(--color-mcp);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+/* Info del bloque de tecnología */
+.tech-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-info h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    color: var(--text-main);
+}
+
+.section-info p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 1.8rem;
+}
+
+.tech-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.feature-bullet {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+}
+
+.feature-item div {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.feature-item div strong {
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.main-footer {
+    background-color: var(--text-main);
+    color: #94a3b8;
+    padding: 40px 24px;
+    border-top: 1px solid #334155;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.footer-brand .logo-icon {
+    color: var(--primary);
+}
+
+.footer-copy {
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Media Queries para Responsividad (Mobile First)
+   ========================================================================== */
+
+@media (max-width: 968px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-graphic {
+        order: -1; /* El gráfico se muestra arriba del texto en móviles */
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-grid, .section-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .section-grid.reverse .section-visual {
+        grid-column: auto;
+    }
+
+    .section-grid.reverse .section-info {
+        grid-column: auto;
+    }
+
+    .icon-wrapper {
+        width: 120px;
+        height: 120px;
+        border-radius: 24px;
+    }
+
+    .icon-wrapper svg {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        height: auto;
+        padding: 12px 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-menu {
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    .hero-section {
+        padding-top: 150px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

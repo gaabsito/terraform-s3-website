@@ -1,0 +1,4 @@
+# Copia este archivo como terraform.tfvars y escribe el bucket ya creado.
+# No incluyas credenciales AWS en este archivo.
+bucket_name = "sustituye-por-tu-bucket-existente"
+aws_region  = "us-west-2"

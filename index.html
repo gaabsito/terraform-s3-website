@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica DevOps 00 — Publicación web en AWS S3 con IA + MCP</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Archivo CSS local -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navegación Sticky -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>DevOps Práctica 00</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#terraform">Terraform</a></li>
+                <li><a href="#aws-s3">AWS S3</a></li>
+                <li><a href="#mcp">MCP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <header id="inicio" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">Práctica DevOps 00</span>
+                <h1>Publicación web en AWS S3 con <span class="highlight">IA + MCP</span></h1>
+                <p class="subtitle">Creación, despliegue y automatización moderna de infraestructura estática.</p>
+
+                <div class="author-card">
+                    <div class="author-avatar">G</div>
+                    <div class="author-info">
+                        <span class="author-label">Creado por:</span>
+                        <span class="author-name">Gabriel</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#terraform" class="btn btn-primary">Comenzar Exploración</a>
+                    <a href="#mcp" class="btn btn-secondary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        Ver configuración MCP
+                    </a>
+                </div>
+            </div>
+
+            <!-- Gráfico SVG del flujo DevOps en el Hero -->
+            <div class="hero-graphic">
+                <div class="graphic-card">
+                    <svg class="devops-flow" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Conectores/Líneas de Flujo -->
+                        <path d="M80 150 H 320" stroke="var(--primary-light)" stroke-width="3" stroke-dasharray="6 4" />
+                        <path d="M200 80 V 220" stroke="var(--primary-light)" stroke-width="3" stroke-dasharray="6 4" />
+
+                        <!-- Nodo Central: MCP (Model Context Protocol) -->
+                        <g class="node node-center">
+                            <circle cx="200" cy="150" r="45" fill="var(--card-bg)" stroke="var(--accent)" stroke-width="3"/>
+                            <text x="200" y="145" text-anchor="middle" font-weight="bold" fill="var(--text-main)" font-size="14">MCP</text>
+                            <text x="200" y="162" text-anchor="middle" fill="var(--text-muted)" font-size="10">Protocolo</text>
+                        </g>
+
+                        <!-- Nodo Izquierda: IA (Agente) -->
+                        <g class="node node-left">
+                            <circle cx="80" cy="150" r="35" fill="var(--card-bg)" stroke="var(--primary)" stroke-width="2"/>
+                            <text x="80" y="146" text-anchor="middle" font-weight="bold" fill="var(--text-main)" font-size="12">Agente IA</text>
+                            <text x="80" y="160" text-anchor="middle" fill="var(--text-muted)" font-size="9">Creador</text>
+                        </g>
+
+                        <!-- Nodo Superior: Terraform (IaC) -->
+                        <g class="node node-top">
+                            <circle cx="200" cy="80" r="35" fill="var(--card-bg)" stroke="var(--primary-dark)" stroke-width="2"/>
+                            <text x="200" y="76" text-anchor="middle" font-weight="bold" fill="var(--text-main)" font-size="11">Terraform</text>
+                            <text x="200" y="90" text-anchor="middle" fill="var(--text-muted)" font-size="9">Código (IaC)</text>
+                        </g>
+
+                        <!-- Nodo Derecho: AWS S3 (Hosting) -->
+                        <g class="node node-right">
+                            <circle cx="320" cy="150" r="35" fill="var(--card-bg)" stroke="var(--warning)" stroke-width="2"/>
+                            <text x="320" y="146" text-anchor="middle" font-weight="bold" fill="var(--text-main)" font-size="11">AWS S3</text>
+                            <text x="320" y="160" text-anchor="middle" fill="var(--text-muted)" font-size="9">Destino Web</text>
+                        </g>
+                    </svg>
+                    <div class="graphic-caption">
+                        <span class="pulse-dot"></span> Orquestación Autónoma DevOps
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="content-wrapper">
+
+        <!-- Sección Terraform -->
+        <section id="terraform" class="tech-section">
+            <div class="section-grid">
+                <div class="section-visual">
+                    <div class="icon-wrapper color-terraform">
+                        <!-- Icono SVG representativo de Terraform -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21V9.75M12 9.75a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 016 5.25V3M12 9.75a3.375 3.375 0 013.375-3.375h1.5A1.125 1.125 0 0118 5.25V3m-9 13.5h.008v.008H9v-.008zm6 0h.008v.008H15v-.008zm-6-3h.008v.008H9v-.008zm6 0h.008v.008H15v-.008z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-info">
+                    <span class="tech-tag">Infraestructura como Código (IaC)</span>
+                    <h2>¿Qué es Terraform?</h2>
+                    <p>
+                        <strong>Terraform</strong> es una herramienta de código abierto desarrollada por HashiCorp que permite definir, aprovisionar y gestionar infraestructura física y en la nube de forma declarativa. En lugar de configurar servidores de forma manual, Terraform utiliza el lenguaje declarativo HCL (HashiCorp Configuration Language) para describir el estado final deseado de la arquitectura.
+                    </p>
+                    <div class="tech-features">
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Plan y Aplicación:</strong> Permite previsualizar los cambios de infraestructura antes de aplicarlos para evitar errores catastróficos.
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Multi-Cloud:</strong> Soporta proveedores líderes de la industria como AWS, Azure, Google Cloud y más mediante proveedores estandarizados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección AWS S3 -->
+        <section id="aws-s3" class="tech-section alt-bg">
+            <div class="section-grid reverse">
+                <div class="section-visual">
+                    <div class="icon-wrapper color-s3">
+                        <!-- Icono SVG representativo de AWS S3 -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-info">
+                    <span class="tech-tag">Almacenamiento y Hosting de Objetos</span>
+                    <h2>¿Qué es AWS S3?</h2>
+                    <p>
+                        <strong>Amazon Simple Storage Service (S3)</strong> es un servicio de almacenamiento de objetos líder en la industria, que ofrece una escalabilidad, disponibilidad de datos, seguridad y rendimiento líderes del sector. Es una pieza fundamental en cualquier ecosistema DevOps gracias a su versatilidad.
+                    </p>
+                    <div class="tech-features">
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Hosting Web Estático:</strong> Permite servir archivos HTML, CSS y JS de forma global, rápida y con costes ínfimos sin necesidad de configurar servidores web complejos.
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Durabilidad Extrema:</strong> Diseñado con una durabilidad del 99.999999999% (11 nueves) de los datos de manera nativa y automática.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección MCP -->
+        <section id="mcp" class="tech-section">
+            <div class="section-grid">
+                <div class="section-visual">
+                    <div class="icon-wrapper color-mcp">
+                        <!-- Icono SVG representativo de Model Context Protocol -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="section-info">
+                    <span class="tech-tag">Protocolo de Contexto de Modelos (MCP)</span>
+                    <h2>¿Qué es Model Context Protocol?</h2>
+                    <p>
+                        El <strong>Model Context Protocol (MCP)</strong> es un estándar abierto que define de qué forma un modelo de Inteligencia Artificial (LLM) se conecta a fuentes de datos y herramientas externas. Actúa de manera idéntica a una interfaz USB para modelos de lenguaje, permitiendo una comunicación segura y estructurada.
+                    </p>
+                    <div class="tech-features">
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Seguridad y Orquestación:</strong> Permite que agentes inteligentes como este lean e interactúen de forma segura con recursos de tu entorno de desarrollo o servidores, sin que la IA tenga libre acceso descontrolado.
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-bullet">✔</span>
+                            <div>
+                                <strong>Práctica DevOps Automatizada:</strong> Gracias a MCP, este agente ha podido guiarte y coordinar la creación y el posterior despliegue de esta práctica con total fluidez.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>Práctica DevOps 00</span>
+            </div>
+            <p class="footer-copy">Desarrollado de forma híbrida usando Inteligencia Artificial, MCP y Terraform. &copy; 2026 Gabriel.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
